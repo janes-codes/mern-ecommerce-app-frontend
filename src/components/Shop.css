@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.shop-container {
+    width: 100%;
+    display: grid;
+    padding: 20px 0px;
+    grid-template-columns: repeat(auto-fit,minmax(280px, 1fr));
+    gap: 2rem;
+    overflow-y: hidden;
+    background-color: #E5E8E8;
+}
+
+.shop-container .box {
+    width: 280px;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px #555;
+    background-color: rgb(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.shop-container .box .content{
+    height: 325px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.shop-container .box .content img{
+    width: 200px;
+    height: 200px; 
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px #555;
+}
+
+.shop-container .box .content button{
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: black;
+    cursor: pointer;
+    box-shadow: 0px 0px 1px #555;
+    color: white;
+}
+
+
+.shop-container .box .content .detail .info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.shop-container .box .content button:hover {
+    color: grey;
+}
+
+.shop-container .box .content input[type=checkbox] {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin: 4px 0 0;
+    line-height: normal;
+    width: 20px;
+    height: 20px;
+}
+
+.flex-it {
+    display: flex;
+    background-color: #E5E8E8;
+}
+
+.dle-div {
+    padding: 10px;
+}
+
+.dle-div .dle-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.9rem;
+    background-color: black;
+    cursor: pointer;
+    box-shadow: 0px 0px 1px #555;
+    color: white;
+}
+
+.dle-div .dle-btn:hover {
+    color: grey;
+}
+
+.dle-div a:hover {
+    color: grey;
+}
+
