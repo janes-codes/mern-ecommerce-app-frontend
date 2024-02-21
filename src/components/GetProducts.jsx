@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import "./Shop.css"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Model from './Model';
 import Footer from './Footer';
 import toast from 'react-hot-toast';
@@ -105,6 +105,13 @@ const GetProducts = () => {
       {rightsOfUser().indexOf('add-products') !== -1 &&
         <div className="dle-div"> 
           <button className = 'dle-btn' onClick={handleDelete}>Delete Selected</button>
+        </div>
+      } 
+      {rightsOfUser().indexOf('add-products') !== -1 &&
+        <div className="dle-div"> 
+          <button className = 'dle-btn'>
+            <Link to="/add/products">Add Products</Link>
+          </button>
         </div>
       }
       </div>

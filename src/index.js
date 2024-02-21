@@ -8,25 +8,25 @@ import { Toaster } from 'react-hot-toast';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
-    <Toaster 
-      toastOptions={{
-        success: {
-          iconTheme: {
-            primary: 'green',
-            secondary: 'black',
+      <App />
+      <Toaster 
+        toastOptions={{
+          success: {
+            iconTheme: {
+              primary: 'green',
+              secondary: 'black',
+            },
           },
-        },
-        error: {
-          iconTheme: {
-            primary: 'red',
-            secondary: 'black',
+          error: {
+            iconTheme: {
+              primary: 'red',
+              secondary: 'black',
+            },
           },
-        },
-        duration: 2000,
-        position: 'top-center',
-      }}
-    />
+          duration: 2000,
+          position: 'top-center',
+        }}
+      />
   </React.StrictMode>
 );
 
