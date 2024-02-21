@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { AiFillCloseCircle } from "react-icons/ai";
-import { useNavigate } from 'react-router-dom'
-import "./Model.css"
+import { useNavigate } from 'react-router-dom';
+import { URL } from "../App";
+import "./Model.css";
 
 const Model = ({detail, close, setClose, handleAddToCart}) => {
   const navigate = useNavigate()
@@ -17,7 +18,7 @@ const Model = ({detail, close, setClose, handleAddToCart}) => {
         description: 'XYZ',//
         handler: function (response) {
             console.log(response, "34")
-            axios.post('http://localhost:3001/verify', { response: response })
+            axios.post(`${URL}/verify`, { response: response })
                 .then(res => {
                     console.log(res, "37")
                     // your orders
@@ -36,7 +37,7 @@ const Model = ({detail, close, setClose, handleAddToCart}) => {
   const handlePayment = (amount) => {
     const userId = localStorage.getItem('userId')
     const _data = { amount: amount }
-    axios.post('http://localhost:3001/orders', _data)
+    axios.post(`${URL}/orders`, _data)
         .then(res => {
           if(userId == null) {
             navigate('/login')

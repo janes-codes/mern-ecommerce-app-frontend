@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import './Cart.css'
 import Footer from "./Footer";
+import { URL } from "../App";
 
 const UserCart = () => {
     const navigate = useNavigate()
@@ -10,12 +11,10 @@ const UserCart = () => {
     const [refresh, setRefresh] = useState(false)
     const userId = localStorage.getItem('userId')
     const [cartItem, setCartItem] = useState([])
-    // const [data, setData] = useState([])
 
     useEffect(() => {
         const data = { userId: localStorage.getItem('userId') }
-        // const headers = { Authorization: localStorage.getItem('token')} {headers}
-        axios.post('http://localhost:3001/get-user-cart', data)
+        axios.post(`${URL}/get-user-cart`, data)
             .then(res => {
                 console.log(res.data, "15")
                 setCartItem(res.data.data.cart)
@@ -30,7 +29,7 @@ const UserCart = () => {
     const userId = localStorage.getItem('userId')
     console.log(deleteData)
     const data = {deleteData: deleteData, userId}
-    axios.post('http://localhost:3001/delete-cart', data)
+    axios.post(`${URL}/delete-cart`, data)
         .then(res => {
             console.log(res.data, "27")
             if (res.data.code === 200) {
@@ -43,8 +42,6 @@ const UserCart = () => {
         })
   }
 
-   
-
     const handleOpenRazorpay = (data) => {
 
         const options = {
@@ -56,7 +53,7 @@ const UserCart = () => {
             description: 'XYZ',//
             handler: function (response) {
                 console.log(response, "34")
-                axios.post('http://localhost:3001/verify', { response: response })
+                axios.post(`${URL}/verify`, { response: response })
                     .then(res => {
                         console.log(res, "37")
                         // your orders
@@ -74,7 +71,7 @@ const UserCart = () => {
 
      const handlePayment = (amount) => {
         const _data = { amount: amount }
-        axios.post('http://localhost:3001/orders', _data)
+        axios.post(`${URL}/orders`, _data)
             .then(res => {
               if(userId == null) {
                 navigate('/login')

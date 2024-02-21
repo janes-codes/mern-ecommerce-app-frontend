@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './Signup.css'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { URL } from '../App';
 import toast from 'react-hot-toast'
  
 const Signup = () => {
@@ -48,7 +49,7 @@ const Signup = () => {
     // e.preventDefault()
     console.log(name, email, password)
     const data = { name: name, email: email,password: password}
-    axios.post('http://localhost:3001/signup', data)
+    axios.post(`${URL}/signup`, data)
         .then((res) => {
             console.log(res.data, 17)
             if(res.data.code === 401){

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import Model from './Model';
 import Footer from './Footer';
 import toast from 'react-hot-toast';
+import { URL } from '../App';
 
 const GetProducts = () => {
 
@@ -16,7 +17,7 @@ const GetProducts = () => {
   const [close,setClose] = useState(false)
 
   useEffect(() =>{
-    axios.get('http://localhost:3001/get-products')
+    axios.get(`${URL}/get-products`)
     .then(res => {
       setData(res.data.data)
       console.log("44")
@@ -44,7 +45,7 @@ const GetProducts = () => {
   const handleDelete = () => {
     const data = deleteData
     const headers = {Authorization: localStorage.getItem('token')} 
-    axios.post('http://localhost:3001/delete-products', data, {headers})
+    axios.post(`${URL}/delete-products`, data, {headers})
         .then(res => {
             console.log(res.data, "27")
             if (res.data.code === 200) {
@@ -64,7 +65,7 @@ const GetProducts = () => {
     console.log(userId, "88")
     const _data = { productId: _productId, userId }
     const headers = { Authorization: localStorage.getItem('token')}
-    axios.post('http://localhost:3001/add-to-cart', _data, {headers})
+    axios.post(`${URL}/add-to-cart`, _data, {headers})
         .then(res => {
             console.log(res.data, "49")
             if (userId !== null && res.data.code === 200) {

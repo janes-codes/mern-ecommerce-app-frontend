@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import './Add-Edit.css'
 import toast from "react-hot-toast"
+import { URL } from "../App"
 
 const GetProduct = () => {
     const navigate = useNavigate()
@@ -15,7 +16,7 @@ const GetProduct = () => {
 
     useEffect(() => { 
         const id = params.id
-        axios.get(`http://localhost:3001/get-product/${id}`)
+        axios.get(`${URL}/get-product/${id}`)
             .then(res => {
                 console.log(res.data.data, "13")
                 setImage(res.data.data.image)
@@ -35,7 +36,7 @@ const GetProduct = () => {
 
         const data = { id: params.id, image: image, title, imgDesc, seller, price: Number(price) }
         const headers = { Authorization: localStorage.getItem('token')}
-        axios.post('http://localhost:3001/edit-products', data,  {headers})
+        axios.post(`${URL}/edit-products`, data,  {headers})
             .then(res => {
                 console.log(res.data, "res")
                 if (res.data.code === 200) {

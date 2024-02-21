@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import './Add-Edit.css'
 import toast from 'react-hot-toast'
+import { URL } from '../App'
 
 const AddProduct = () => {
   const [image, setImage] = useState('')
@@ -18,7 +19,7 @@ const AddProduct = () => {
 
     const data = {image, title, price, imgDesc, seller}
     const headers = {Authorization: localStorage.getItem('token')} 
-    axios.post('http://localhost:3001/add-product', data,  {headers})
+    axios.post(`${URL}/add-product`, data,  {headers})
       .then(res => {
         console.log(res)
         if(res.data === 'saved') {

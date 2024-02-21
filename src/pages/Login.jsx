@@ -4,6 +4,7 @@ import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { URL } from '../App'
 
 function Login() {
   const navigate = useNavigate()
@@ -37,7 +38,7 @@ function Login() {
     console.log(email, password)
 
     const data = {email: email, password: password}
-    axios.post('http://localhost:3001/login', data)
+    axios.post(`${URL}/login`, data)
       .then((res) => {
         console.log(res.data.token, 17)
         if(res.data.token) {
